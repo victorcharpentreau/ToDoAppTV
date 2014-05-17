@@ -3,6 +3,7 @@ package fr.epsi.todoapptv.pojos;
 public class Todo {
 	private boolean done;
 	private String todoStr;
+	private String createdDate, realizedDate;
 	
 	public Todo(String todoStr){
 		this.todoStr = todoStr;
@@ -23,6 +24,22 @@ public class Todo {
 
 	public void setTodoStr(String todoStr) {
 		this.todoStr = todoStr;
+	}
+
+	public String getCreatedDate() {
+		return createdDate;
+	}
+
+	public void setCreatedDate(String createdDate) {
+		this.createdDate = createdDate;
+	}
+
+	public String getRealizedDate() {
+		return realizedDate;
+	}
+
+	public void setRealizedDate(String realizedDate) {
+		this.realizedDate = realizedDate;
 	}
 	
 }
