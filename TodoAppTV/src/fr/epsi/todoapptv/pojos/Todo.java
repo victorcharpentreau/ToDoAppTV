@@ -6,6 +6,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 public class Todo {
+	private int todoId;
 	private boolean done;
 	private String todoStr;
 	private String createdDate, realizedDate;

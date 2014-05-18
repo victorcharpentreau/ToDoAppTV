@@ -1,14 +1,22 @@
 package fr.epsi.todoapptv;
 
+import fr.epsi.todoapptv.adapters.TodoListAdapter;
+import fr.epsi.todoapptv.pojos.Todo;
+import fr.epsi.todoapptv.pojos.TodoList;
 import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ListView;
+import android.widget.Toast;
 import android.os.Build;
 
 public class MainActivity extends Activity {
@@ -28,7 +36,6 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
         return true;
@@ -52,12 +59,38 @@ public class MainActivity extends Activity {
     public static class PlaceholderFragment extends Fragment {
 
         public PlaceholderFragment() {
+        	
         }
 
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
+        	// On définit la view du fragment (fragment_main)
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+            final TodoList todoList = new TodoList();
+            // Instanciation des variables liées aux ressources du fragment (edit, button ...)
+            final EditText editTodo = (EditText) rootView.findViewById(R.id.editTodo);
+            ImageButton buttonTodo = (ImageButton) rootView.findViewById(R.id.buttonTodo);
+            final ListView listViewTodo = (ListView) rootView.findViewById(R.id.listViewTodo);
+            // Ajout du Listener sur le bouton d'ajout du Todo
+            buttonTodo.setOnClickListener(new ImageButton.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                	// Traitement réalisé lors du click sur le bouton
+                    String title = editTodo.getText().toString();
+                    // Test de la valeur du input
+                    if(!title.equals("")){
+                    	System.out.println("Debug : "+title);
+                    	Todo todo = new Todo(title);
+                    	todoList.add(todo);
+                    	TodoListAdapter adapter = new TodoListAdapter(todoList);
+                    	listViewTodo.setAdapter(adapter);
+                    }else{
+                    	Log.d("info", "editTodo empty");
+                    	Toast.makeText(getActivity(), "Veuillez indiquer le nom de votre Todo dans le champ prévu à cet effet", Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
             return rootView;
         }
     }
