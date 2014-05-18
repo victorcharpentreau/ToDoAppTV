@@ -1,5 +1,10 @@
 package fr.epsi.todoapptv.pojos;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class Todo {
 	private boolean done;
 	private String todoStr;
@@ -8,6 +13,8 @@ public class Todo {
 	public Todo(String todoStr){
 		this.todoStr = todoStr;
 		this.done = false;
+		this.setCreatedDate();
+		this.realizedDate = null;
 	}
 
 	public boolean isDone() {
@@ -30,8 +37,10 @@ public class Todo {
 		return createdDate;
 	}
 
-	public void setCreatedDate(String createdDate) {
-		this.createdDate = createdDate;
+	public void setCreatedDate() {
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		Date today = Calendar.getInstance().getTime();
+		this.createdDate = df.format(today);
 	}
 
 	public String getRealizedDate() {
