@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 	<item name="green" type="color">#5cb85c</item>
- 
+	<item name="darkGreen" type="color">#275e23</item>
+ 	<item name="cream" type="color">#fcfcfc</item>
+ 	
     <integer-array name="androidcolors">
         <item>@color/green</item>
+        <item>@color/darkGreen</item>
+        <item>@color/cream</item>
     </integer-array>
 </resources>

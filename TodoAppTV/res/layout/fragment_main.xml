@@ -19,7 +19,11 @@
             android:layout_gravity="center"
             android:layout_marginLeft="5dp"
             android:layout_weight="0.15"
-            android:ems="10" >
+            android:ems="10"
+            android:textColor="@color/cream"
+            android:textColorHint="@color/cream"
+            android:textColorLink="@color/darkGreen" >
+
         </EditText>
 
         <ImageButton
